@@ -32,9 +32,3 @@ cp .vimrc $HOME/.vimrc
 echo "Installing Sublime Text"
 brew cask install sublime-text
 
-echo "Installing Java"
-brew cask install java
-
-echo "Installing buck"
-brew tap facebook/fb
-brew install buck
