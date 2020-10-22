@@ -32,3 +32,9 @@ cp .vimrc $HOME/.vimrc
 echo "Installing Sublime Text"
 brew cask install sublime-text
 
+# Setup blogging platform
+
+cd /tmp
+git clone https://github.com/johnsundell/splash.git
+cd splash
+make install
