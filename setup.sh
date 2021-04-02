@@ -22,8 +22,14 @@ echo "Installing VS Code"
 brew install --cask visual-studio-code
 
 echo "Setup rbenv"
+brew install openssl
 brew install rbenv
 rbenv init
+source ~/.zshrc
+
+RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)
+rbenv install $RUBY_VERSION
+rbenv local $RUBY_VERSION
 
 echo "Install Android Platform Tools"
 brew install android-platform-tools
