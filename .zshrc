@@ -9,6 +9,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.personal_env
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+eval "$(rbenv init -)"

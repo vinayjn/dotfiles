@@ -1,3 +1,6 @@
+USER_NAME="Vinay Jain"
+USER_EMAIL=$(/usr/libexec/PlistBuddy -c "print :Accounts:0:AccountID" ~/Library/Preferences/MobileMeAccounts.plist)
+
 # Install Homebrew if not present
 
 if [[ $(command -v brew) == "" ]]; then
@@ -10,31 +13,39 @@ fi
 
 # Install brew packages
 
-echo "Installing iterm2"
-brew cask install iterm2
+echo "Downloading and Installing fonts: Source code pro & Fira Code"
+brew tap homebrew/cask-fonts 
+brew install --cask font-source-code-pro
+brew install --cask font-fira-code
 
-echo "Downloading and Installing font: Source code pro"
-brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+echo "Installing VS Code"
+brew install --cask visual-studio-code
+
+echo "Setup rbenv"
+brew install rbenv
+rbenv init
+
+echo "Install Android Platform Tools"
+brew install android-platform-tools
 
 # Setup zsh
-echo "Setting Up zsh"
-brew install zsh
-sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 brew install zsh-syntax-highlighting
 cp .zshrc $HOME/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Setup Vim
 echo "Setting Up Vim"
 cp -r .vim $HOME/.vim
 cp .vimrc $HOME/.vimrc
 
-echo "Installing Sublime Text"
-brew cask install sublime-text
 
 # Setup blogging platform
-
 cd /tmp
 git clone https://github.com/johnsundell/splash.git
 cd splash
 make install
+
+# Configure Git
+git config user.name $USER_NAME
+git config user.email "$USER_EMAIL"
