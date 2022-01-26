@@ -11,19 +11,6 @@ else
     brew update
 fi
 
-# Install brew packages
-
-echo "Downloading and Installing fonts: Source code pro & Fira Code"
-brew tap homebrew/cask-fonts 
-brew install --cask font-source-code-pro
-brew install --cask font-fira-code
-
-echo "Installing VS Code"
-brew install --cask visual-studio-code
-
-echo "Install Android Platform Tools"
-brew install android-platform-tools
-
 echo "Setup rbenv"
 brew install openssl@1.1
 brew install rbenv
@@ -55,3 +42,24 @@ cp .vimrc $HOME/.vimrc
 # Configure Git
 git config user.name $USER_NAME
 git config user.email "$USER_EMAIL"
+
+
+# Install brew packages
+
+echo "Installing apps and fonts"
+brew tap homebrew/cask-fonts 
+brew install --cask font-source-code-pro
+brew install --cask font-fira-code
+
+brew install --cask alfred
+brew install --cask google-chrome
+brew install gifski
+brew install android-platform-tools
+brew install --cask private-internet-access
+brew install --cask proxyman
+brew install --cask slack
+brew install --cask sourcetree
+brew install --cask sublime-text
+brew install --cask sublime-merge
+brew install --cask visual-studio-code
+brew install --cask zoomus
