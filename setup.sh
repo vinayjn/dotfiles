@@ -21,36 +21,36 @@ brew install --cask font-fira-code
 echo "Installing VS Code"
 brew install --cask visual-studio-code
 
+echo "Install Android Platform Tools"
+brew install android-platform-tools
+
 echo "Setup rbenv"
-brew install openssl
+brew install openssl@1.1
 brew install rbenv
 rbenv init
+
+# Setup zsh
+echo "Setup ZSH"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+brew install zsh-syntax-highlighting
+cp .zshrc $HOME/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 source ~/.zshrc
+
+
+echo "Installing Ruby"
 
 RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)
 rbenv install $RUBY_VERSION
 rbenv local $RUBY_VERSION
 
-echo "Install Android Platform Tools"
-brew install android-platform-tools
-
-# Setup zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-brew install zsh-syntax-highlighting
-cp .zshrc $HOME/.zshrc
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Setup Vim
 echo "Setting Up Vim"
 cp -r .vim $HOME/.vim
 cp .vimrc $HOME/.vimrc
 
-
-# Setup blogging platform
-cd /tmp
-git clone https://github.com/johnsundell/splash.git
-cd splash
-make install
 
 # Configure Git
 git config user.name $USER_NAME
