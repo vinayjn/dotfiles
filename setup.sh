@@ -15,6 +15,8 @@ cp Xcode/Themes/* $THEME_DIR
 # Configure Git
 git config --global user.name $USER_NAME
 git config --global user.email "$USER_EMAIL"
+git config --global init.defaultBranch "main"
+git config --global pull.rebase true
 
 # Install Homebrew if not present
 
@@ -31,23 +33,36 @@ fi
 # Install brew packages
 
 echo "Installing apps and fonts"
-
 brew tap homebrew/cask-fonts
-brew install --cask font-jetbrains-mono
-brew install --cask brave-browser
-brew install --cask raycast
-brew install --cask google-chrome
-brew install gifski
-brew install android-platform-tools
-brew install --cask private-internet-access
-brew install --cask proxyman
-brew install --cask slack
-brew install --cask sourcetree
-brew install --cask fork
-brew install --cask sublime-text
-brew install --cask visual-studio-code
-brew install --cask zoomus
-brew install --cask vlc
+
+casks=(
+    'font-jetbrains-mono'
+    'brave-browser'
+    'raycast'
+    'google-chrome'
+    'private-internet-access'
+    'proxyman'
+    'slack'
+    'sourcetree'
+    'fork'
+    'sublime-text'
+    'visual-studio-code'
+    'zoomus'
+    'vlc'
+)
+
+for cask in "${casks[@]}" ;do
+    brew install --cask $cask
+done
+
+formulaes=(
+    'gifski'
+    'android-platform-tools'
+)
+
+for formula in "${formulaes[@]}" ;do
+    brew install $formula
+done
 
 # Setup zsh
 echo "Setup ZSH"
