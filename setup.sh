@@ -36,19 +36,19 @@ echo "Installing apps and fonts"
 brew tap homebrew/cask-fonts
 
 casks=(
-    'font-jetbrains-mono'
     'brave-browser'
-    'raycast'
+    'font-jetbrains-mono'
+    'fork'
     'google-chrome'
     'private-internet-access'
     'proxyman'
+    'raycast'
     'slack'
     'sourcetree'
-    'fork'
     'sublime-text'
     'visual-studio-code'
-    'zoomus'
     'vlc'
+    'zoomus'
 )
 
 for cask in "${casks[@]}" ;do
@@ -56,8 +56,9 @@ for cask in "${casks[@]}" ;do
 done
 
 formulaes=(
-    'gifski'
     'android-platform-tools'
+    'gifski'
+    'vapor'
 )
 
 for formula in "${formulaes[@]}" ;do
