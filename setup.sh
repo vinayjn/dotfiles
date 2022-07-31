@@ -37,6 +37,7 @@ brew tap homebrew/cask-fonts
 
 casks=(
     'brave-browser'
+    'db-browser-for-sqlite'
     'font-jetbrains-mono'
     'fork'
     'google-chrome'
