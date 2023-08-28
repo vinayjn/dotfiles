@@ -38,6 +38,7 @@ brew tap homebrew/cask-fonts
 casks=(
     'brave-browser'
     'db-browser-for-sqlite'
+    'figma'
     'font-jetbrains-mono'
     'fork'
     'google-chrome'
@@ -59,6 +60,7 @@ done
 formulaes=(
     'android-platform-tools'
     'gifski'
+    'go'
     'vapor'
 )
 
@@ -74,6 +76,15 @@ brew install zsh-syntax-highlighting
 
 cp .zshrc $HOME/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+echo "Installing pyenv"
+
+brew install pyenv
+eval "$(pyenv init -)"
+PY_VERSION=$(pyenv install --list | egrep '^\s+\d+.\d+.\d+$' | tail -1 | sed -e 's/^[ \t]*//')
+pyenv install $PY_VERSION
+pyenv local $PY_VERSION
+
 
 echo "Installing Ruby"
 echo "Setup rbenv"

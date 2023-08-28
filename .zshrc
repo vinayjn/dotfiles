@@ -13,3 +13,5 @@ source $ZSH/oh-my-zsh.sh
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 eval "$(rbenv init -)"
+
+eval "$(pyenv init -)"
