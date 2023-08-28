@@ -5,6 +5,8 @@ DEFAULT_USER=$(whoami)
 
 plugins=(
 	git
+	history
+	common-aliases
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )

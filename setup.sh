@@ -30,12 +30,15 @@ else
     brew update
 fi
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # Install brew packages
 
 echo "Installing apps and fonts"
 brew tap homebrew/cask-fonts
 
 casks=(
+    'android-file-transfer'
     'appcleaner'
     'brave-browser'
     'calibre'
@@ -56,6 +59,7 @@ casks=(
     'vlc'
     'xcodes'
     'zoomus'
+    'chromedriver'
 )
 
 for cask in "${casks[@]}" ;do
@@ -64,6 +68,8 @@ done
 
 formulaes=(
     'android-platform-tools'
+    'git'
+    'git-lfs'
     'gifski'
     'go'
     'vapor'    
@@ -76,11 +82,11 @@ done
 # Setup zsh
 echo "Setup ZSH"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-brew install zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 cp .zshrc $HOME/.zshrc
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 echo "Installing pyenv"
 
@@ -89,7 +95,6 @@ eval "$(pyenv init -)"
 PY_VERSION=$(pyenv install --list | egrep '^\s+\d+.\d+.\d+$' | tail -1 | sed -e 's/^[ \t]*//')
 pyenv install $PY_VERSION
 pyenv local $PY_VERSION
-
 
 echo "Installing Ruby"
 echo "Setup rbenv"
